@@ -6,4 +6,14 @@ namespace NoSurrender
         Normal,
         Fast,
     }
+    
+    
+    public enum HeroType
+    {
+        Obi,
+        ObiGang,
+        TriDrone,
+        RomanIvanov,
+        Heli,
+    }
 }
