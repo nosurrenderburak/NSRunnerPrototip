@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1daaae87499364d7889f77c3c8837ed1, type: 3}
+  m_Name: HeroBufferResources
+  m_EditorClassIdentifier: 
+  heroBufferDatas:
+  - heroBufferType: 0
+    heroBufferPrefab: {fileID: 2752282186949961010, guid: 2cfe3c3967d04472a9c355414f1bfdc7, type: 3}
+  - heroBufferType: 1
+    heroBufferPrefab: {fileID: 6555181690773566127, guid: 35c0832d1a7d74acd840b01fa3fafe3d, type: 3}
+  - heroBufferType: 2
+    heroBufferPrefab: {fileID: 2056084471518510561, guid: d369cad0127d446d19b23bd7c9ee1904, type: 3}

@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using NoSurrender;
 using TMPro;
 using UnityEngine;
@@ -10,6 +10,10 @@ public class HeroBufferHealthController : MonoBehaviour
     [SerializeField] private HeroBuffer heroBuffer;
     [SerializeField] private EnemyHeroMove enemyHeroMove;
     [SerializeField] private Animator animator;
+    [SerializeField] private Animator shakeAnimator;
+    [SerializeField] private ParticleSystem explosionParticle;
+    [SerializeField] private BoxCollider boxCollider;
+    [SerializeField] private GameObject bufferBody;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private int maxHealth;
 
@@ -28,6 +32,12 @@ public class HeroBufferHealthController : MonoBehaviour
     private void OnEnable()
     {
         healthText.text = maxHealth.ToString();
+    }
+
+    private void OnDisable()
+    {
+        bufferBody.SetActive(true);
+        boxCollider.enabled = true;
     }
 
     #endregion
@@ -55,9 +65,23 @@ public class HeroBufferHealthController : MonoBehaviour
     {
         if (maxHealth > 0) return;
         
+        bufferBody.SetActive(false);
+        explosionParticle.Play();
+        boxCollider.enabled = false;
+        
+        shakeAnimator.SetTrigger(GameConsts.SHAKE);
         heroBuffer.IsDead = true;
         _blasterAttackController = enemyHeroMove.TargetTransform.GetComponentInChildren<BlasterAttackController>();
         _blasterAttackController.CurrentLevel++;
+
+        StartCoroutine(nameof(DestroyBuffer));
+    }
+    
+    
+    private IEnumerator DestroyBuffer()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
 
     #endregion

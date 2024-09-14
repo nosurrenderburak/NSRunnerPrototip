@@ -7,7 +7,7 @@ public class BlasterAttackController : MonoBehaviour
     [SerializeField] private LevelUpResources levelUpResources;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private ParticleSystem levelUpParticle;
-    [SerializeField] private float shootTime;
+    [SerializeField] private GameObject levelUpText;
 
     #endregion
 
@@ -31,6 +31,7 @@ public class BlasterAttackController : MonoBehaviour
         {
             _currentLevel = value;
             levelUpParticle.Play();
+            levelUpText.SetActive(true);
             _levelUpData = levelUpResources.GetLevelUpData(_currentLevel);
             _currentShootTime = _levelUpData.ShootTime;
         }
