@@ -62,6 +62,8 @@ namespace NoSurrender
 
         private void GetInputs()
         {
+            if (Utils.IsPointerOverUIObject()) return;
+            
             if (Input.GetMouseButtonDown(0))
             {
                 currentFrameMousePos = Input.mousePosition;
