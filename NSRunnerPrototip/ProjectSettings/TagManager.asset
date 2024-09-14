@@ -9,6 +9,7 @@ TagManager:
   - Hero
   - Bullet
   - EnemyHero
+  - HeroBuffer
   layers:
   - Default
   - TransparentFX

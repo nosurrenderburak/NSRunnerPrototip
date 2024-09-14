@@ -18,7 +18,7 @@ MonoBehaviour:
     shootTime: 0.4
   - bulletScale: {x: 1.4, y: 1.4, z: 1.4}
     bulletSpeed: 2000
-    shootTime: 0.3
+    shootTime: 0.25
   - bulletScale: {x: 1.8, y: 1.8, z: 1.8}
-    bulletSpeed: 2200
-    shootTime: 0.2
+    bulletSpeed: 2300
+    shootTime: 0.1

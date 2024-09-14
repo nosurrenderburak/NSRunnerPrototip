@@ -16,4 +16,12 @@ namespace NoSurrender
         RomanIvanov,
         Heli,
     }
+
+
+    public enum HeroBufferType
+    {
+        Weapon,
+        Hattori,
+        Henry
+    }
 }

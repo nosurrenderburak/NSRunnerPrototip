@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletMovementController: {fileID: 158928403085512170}
+  sphereCollider: {fileID: 7559707104546944464}
   bulletBody: {fileID: 4987422709772117539}
   bulletExplosion: {fileID: 3850760894135227763}
 --- !u!114 &158928403085512170

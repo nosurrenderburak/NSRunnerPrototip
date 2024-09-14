@@ -44,7 +44,7 @@ public class HeroMovementController : MonoBehaviour
     private void SetCharacterHorizontalMovement()
     {
         _newPositionX = transform.position.x + _horizontalMovementSpeed * -_touchControlHelper.horizontalSwipeConstant * Time.fixedDeltaTime;
-        //_newPositionX = Mathf.Clamp(_newPositionX, -_horizontalLimit, _horizontalLimit);
+        _newPositionX = Mathf.Clamp(_newPositionX, -_horizontalLimit, _horizontalLimit);
         transform.position = new Vector3(_newPositionX, transform.position.y, transform.position.z);
     }
 }
