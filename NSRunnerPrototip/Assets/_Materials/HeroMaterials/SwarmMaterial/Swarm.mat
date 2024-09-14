@@ -15,6 +15,7 @@ Material:
   - _MK_ALBEDO_MAP
   - _MK_COLOR_GRADING_ALBEDO
   - _MK_OUTLINE_HULL_CLIP
+  - _MK_OUTLINE_NOISE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
@@ -104,10 +105,10 @@ Material:
     - _Blend: 0
     - _BlendDst: 0
     - _BlendSrc: 1
-    - _Brightness: 1.13
+    - _Brightness: 1
     - _BumpScale: 1
     - _ColorGrading: 1
-    - _Contrast: 1.1
+    - _Contrast: 1.06
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _Dissolve: 0
@@ -128,13 +129,13 @@ Material:
     - _OutlineData: 0
     - _OutlineFadeMax: 2
     - _OutlineFadeMin: 0.25
-    - _OutlineNoise: 0
-    - _OutlineSize: 5
-    - _OutlineTab: 0
+    - _OutlineNoise: 0.22
+    - _OutlineSize: 20
+    - _OutlineTab: 1
     - _Parallax: 0.02
     - _RenderFace: 2
     - _RenderPriority: 0
-    - _Saturation: 1.23
+    - _Saturation: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
