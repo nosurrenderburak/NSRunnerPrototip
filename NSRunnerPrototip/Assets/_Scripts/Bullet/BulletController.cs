@@ -16,6 +16,7 @@ public class BulletController : MonoBehaviour
     #region Fields
 
     private readonly WaitForSeconds _deSpawnTime = new(0.75f);
+    private EnemyHero _enemyHeroInstance;
 
     #endregion
 
@@ -31,6 +32,7 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         OnHitObstacle(other);
+        OnHitEnemyHero(other);
     }
 
     #endregion
@@ -61,6 +63,17 @@ public class BulletController : MonoBehaviour
     {
         if (other.gameObject.CompareTag(GameConsts.OBSTACLE))
         {
+            KillBullet();
+        }
+    }
+    
+    
+    private void OnHitEnemyHero(Collider other)
+    {
+        if (other.gameObject.CompareTag(GameConsts.ENEMY_HERO))
+        {
+            _enemyHeroInstance = other.gameObject.GetComponent<EnemyHero>();
+            _enemyHeroInstance.KillHero();
             KillBullet();
         }
     }

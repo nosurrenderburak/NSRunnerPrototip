@@ -120,5 +120,9 @@ public class PooleableObject
 public enum PoolType
 {
     Obi,
+    ObiGang,
+    TriDrone,
+    RomanIvanov,
+    Heli,
     BlasterBullet,
 }

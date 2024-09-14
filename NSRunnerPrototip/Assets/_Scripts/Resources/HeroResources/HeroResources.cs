@@ -9,14 +9,14 @@ public class HeroResources : ScriptableObject
 {
     [SerializeField] private List<Hero> heroList = new();
 
-    private Dictionary<MoveSpeedType, int> _moveSpeedList = new()
+    private Dictionary<MoveSpeedType, float> _moveSpeedList = new()
     {
-        { MoveSpeedType.Slow, 2},
-        { MoveSpeedType.Normal, 3},
-        { MoveSpeedType.Fast, 4},
+        { MoveSpeedType.Slow, 1},
+        { MoveSpeedType.Normal, 2},
+        { MoveSpeedType.Fast, 2.5f},
     };
 
-    public Hero GetHero(HeroType targetHeroType)
+    public Hero GetHero(PoolType targetHeroType)
     {
         var hero = heroList.FirstOrDefault(x => x.HeroType.Equals(targetHeroType));
         hero.MoveSpeed = _moveSpeedList[hero.MoveSpeedType];
@@ -27,13 +27,13 @@ public class HeroResources : ScriptableObject
 [Serializable]
 public struct Hero
 {
-    [SerializeField] private HeroType heroType;
+    [SerializeField] private PoolType heroType;
     [SerializeField] private MoveSpeedType moveSpeedType;
     [SerializeField] private float health;
 
     private float _moveSpeed;
     
-    public HeroType HeroType => heroType;
+    public PoolType HeroType => heroType;
     public MoveSpeedType MoveSpeedType => moveSpeedType;
     public float Health => health;
 

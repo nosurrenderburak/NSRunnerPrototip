@@ -1,0 +1,63 @@
+using System;
+using NoSurrender;
+using UnityEngine;
+
+public class EnemyHero : MonoBehaviour
+{
+    #region Serializable Fields
+
+    [SerializeField] private HeroResources heroResources;
+    [SerializeField] private Collider collider;
+    [SerializeField] private PoolType heroType;
+    [SerializeField] private Animator animator;
+
+    #endregion
+
+
+    #region Properties
+
+    public PoolType HeroType => heroType;
+
+    #endregion
+
+
+    #region Unity Methods
+
+    private void OnEnable()
+    {
+        if (gameObject.TryGetComponent<EnemyHeroMove>(out EnemyHeroMove enemyHeroMove))
+        {
+            enemyHeroMove.CurrentSpeed = heroResources.GetHero(heroType).MoveSpeed;
+        }
+        
+        if (gameObject.TryGetComponent<RomanIvanovController>(out RomanIvanovController romanIvanovController))
+        {
+            romanIvanovController.CurrentSpeed = heroResources.GetHero(heroType).MoveSpeed;
+        }
+
+        collider.enabled = true;
+        animator.SetBool(GameConsts.DIE, false);
+    }
+
+    #endregion
+
+
+    #region Public Methods
+
+    public void KillHero()
+    {
+        collider.enabled = false;
+        if (gameObject.TryGetComponent<EnemyHeroMove>(out EnemyHeroMove enemyHeroMove))
+        {
+            enemyHeroMove.StopMoving(true);
+        }
+        
+        if (gameObject.TryGetComponent<RomanIvanovController>(out RomanIvanovController romanIvanovController))
+        {
+            romanIvanovController.StopMoving(true);
+        }
+        animator.SetBool(GameConsts.DIE, true);
+    }
+
+    #endregion
+}

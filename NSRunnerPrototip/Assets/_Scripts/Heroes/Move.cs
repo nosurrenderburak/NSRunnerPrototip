@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Move : MonoBehaviour
+public abstract class Move : MonoBehaviour
 {
     #region Serializable Fields
 
@@ -41,7 +41,6 @@ public class Move : MonoBehaviour
 
     private void OnEnable()
     {
-        agent.speed = 5;
         StopMoving(false);
         FindTarget();
     }
@@ -50,7 +49,15 @@ public class Move : MonoBehaviour
     private void Update()
     {
         MoveToTarget();
+        CheckTargetDistance();
     }
+
+    #endregion
+
+
+    #region Abstract Methods
+
+    public abstract void CheckTargetDistance();
 
     #endregion
 
