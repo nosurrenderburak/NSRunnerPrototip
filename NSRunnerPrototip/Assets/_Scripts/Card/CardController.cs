@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Fields
-
+    
     private Vector3 _currentPosition;
 
     #endregion
@@ -22,12 +23,24 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public void OnBeginDrag(PointerEventData eventData)
     {
         _currentPosition = transform.position;
+        SetSmoothScale(Vector3.one * 0.5f, 0.2f);
     }
     
     
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.position = _currentPosition;
+        SetSmoothScale(Vector3.one, 0.2f);
+    }
+
+    #endregion
+
+
+    #region Private Methods
+
+    private void SetSmoothScale(Vector3 targetScale, float duration)
+    {
+        transform.DOScale(targetScale, duration);
     }
 
     #endregion

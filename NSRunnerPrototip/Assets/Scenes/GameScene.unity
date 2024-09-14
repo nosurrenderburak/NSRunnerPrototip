@@ -2205,6 +2205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23d3d9cc38e849369e0c548e71de246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deneme: {fileID: 0}
 --- !u!1001 &67812632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24188,6 +24189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23d3d9cc38e849369e0c548e71de246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deneme: {fileID: 0}
 --- !u!1001 &868234626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37637,6 +37639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23d3d9cc38e849369e0c548e71de246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deneme: {fileID: 0}
 --- !u!1001 &1379915183
 PrefabInstance:
   m_ObjectHideFlags: 0
