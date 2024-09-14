@@ -124,5 +124,6 @@ public enum PoolType
     TriDrone,
     RomanIvanov,
     Heli,
+    Swarm,
     BlasterBullet,
 }

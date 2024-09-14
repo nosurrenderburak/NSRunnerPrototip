@@ -28,3 +28,6 @@ MonoBehaviour:
   - heroType: 4
     moveSpeedType: 1
     health: 0
+  - heroType: 5
+    moveSpeedType: 1
+    health: 0
