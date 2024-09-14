@@ -1,3 +1,4 @@
+using NoSurrender;
 using UnityEngine;
 
 public class BlasterAttackController : MonoBehaviour
@@ -8,6 +9,8 @@ public class BlasterAttackController : MonoBehaviour
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private ParticleSystem levelUpParticle;
     [SerializeField] private GameObject levelUpText;
+    [SerializeField] private GameObject hattori;
+    [SerializeField] private GameObject henry;
 
     #endregion
 
@@ -57,7 +60,19 @@ public class BlasterAttackController : MonoBehaviour
     #endregion
 
 
+    #region Public Methods
+
+    public void SetEnabledHero(HeroBufferType heroBufferType)
+    {
+        if (heroBufferType.Equals(HeroBufferType.Hattori)) {hattori.SetActive(true);}
+        else if (heroBufferType.Equals(HeroBufferType.Henry)) {henry.SetActive(true);}
+    }
+
+    #endregion
+
+
     #region Private Methods
+    
 
     private void SetTimeForNextShoot()
     {
@@ -77,7 +92,7 @@ public class BlasterAttackController : MonoBehaviour
         
         if (_bulletInstance.TryGetComponent(out BulletController bulletController))
         {
-            bulletController.InitializeBullet(_levelUpData.BulletScale, _levelUpData.BulletSpeed);
+            bulletController.InitializeBullet(_levelUpData.BulletScale, _currentLevel, _levelUpData.BulletSpeed);
         }
     }
 

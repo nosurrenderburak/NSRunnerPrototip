@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: LevelUpResources
   m_EditorClassIdentifier: 
   levelUpDatas:
-  - bulletScale: {x: 1, y: 1, z: 1}
+  - bulletScale: {x: 0.5, y: 0.5, z: 0.5}
+    bulletSpeed: 1600
+    shootTime: 0.5
+  - bulletScale: {x: 0.75, y: 0.75, z: 0.75}
     bulletSpeed: 1800
     shootTime: 0.4
-  - bulletScale: {x: 1.3, y: 1.3, z: 1.3}
+  - bulletScale: {x: 1.05, y: 1.05, z: 1.05}
     bulletSpeed: 2000
     shootTime: 0.3
-  - bulletScale: {x: 1.5, y: 1.5, z: 1.5}
-    bulletSpeed: 2300
+  - bulletScale: {x: 1.4, y: 1.4, z: 1.4}
+    bulletSpeed: 2200
     shootTime: 0.2
-  - bulletScale: {x: 1.8, y: 1.8, z: 1.8}
-    bulletSpeed: 2700
-    shootTime: 0.1

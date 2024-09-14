@@ -73,6 +73,7 @@ public class HeroBufferHealthController : MonoBehaviour
         heroBuffer.IsDead = true;
         _blasterAttackController = enemyHeroMove.TargetTransform.GetComponentInChildren<BlasterAttackController>();
         _blasterAttackController.CurrentLevel++;
+        _blasterAttackController.SetEnabledHero(heroBuffer.HeroBufferType);
 
         StartCoroutine(nameof(DestroyBuffer));
     }
@@ -80,7 +81,7 @@ public class HeroBufferHealthController : MonoBehaviour
     
     private IEnumerator DestroyBuffer()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
     }
 
