@@ -59660,6 +59660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69562e0b97b647f2ba43d8de45d7839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelUpResources: {fileID: 11400000, guid: 80ace2b0a851a4ad894a6fee98d262ec, type: 2}
   bulletSpawnPoint: {fileID: 1268160365}
   shootTime: 1
 --- !u!1001 &1906718847
