@@ -15,7 +15,7 @@ public class BulletController : MonoBehaviour
 
     #region Fields
 
-    private WaitForSeconds _deSpawnTime = new(0.75f);
+    private readonly WaitForSeconds _deSpawnTime = new(0.75f);
 
     #endregion
 
@@ -68,11 +68,11 @@ public class BulletController : MonoBehaviour
 
     private void ResetBullet()
     {
+        transform.localScale = Vector3.one;
         bulletBody.SetActive(true);
         bulletExplosion.SetActive(false);
         bulletMovementController.ResetBulletMovement();
     }
-    
 
 
     private IEnumerator DeSpawnBullet()
