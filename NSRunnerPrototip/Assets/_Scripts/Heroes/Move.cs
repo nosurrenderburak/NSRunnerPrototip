@@ -15,6 +15,7 @@ public abstract class Move : MonoBehaviour
     #region Fields
 
     private Transform _targetTransform;
+    private Vector3 _currentTargetTransform;
     private float _currentSpeed;
 
     #endregion
@@ -23,6 +24,11 @@ public abstract class Move : MonoBehaviour
     #region Properties
 
     public Transform TargetTransform => _targetTransform;
+    public Vector3 CurrentTargetTransform
+    {
+        get { return _currentTargetTransform; }
+        set { _currentTargetTransform = value; }
+    }
 
     public float CurrentSpeed
     {
@@ -43,6 +49,7 @@ public abstract class Move : MonoBehaviour
     {
         StopMoving(false);
         FindTarget();
+        _currentTargetTransform = _targetTransform.position;
     }
 
 
@@ -79,7 +86,8 @@ public abstract class Move : MonoBehaviour
         if (_targetTransform == null) return;
         
         if (!agent.isStopped)
-            agent.SetDestination(_targetTransform.position);
+            agent.SetDestination(_currentTargetTransform);
+        
     }
 
     

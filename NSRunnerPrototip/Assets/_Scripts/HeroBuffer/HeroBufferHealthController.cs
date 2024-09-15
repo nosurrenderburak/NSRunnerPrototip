@@ -55,6 +55,18 @@ public class HeroBufferHealthController : MonoBehaviour
 
         CheckHealth();
     }
+    
+    
+    public void KillBuffer()
+    {
+        bufferBody.SetActive(false);
+        explosionParticle.Play();
+        boxCollider.enabled = false;
+        
+        shakeAnimator.SetTrigger(GameConsts.SHAKE);
+        heroBuffer.IsDead = true;
+        StartCoroutine(nameof(DestroyBuffer));
+    }
 
     #endregion
 

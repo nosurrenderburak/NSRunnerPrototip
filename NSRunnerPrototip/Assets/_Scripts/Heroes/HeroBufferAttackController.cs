@@ -25,7 +25,7 @@ public class HeroBufferAttackController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckAttackZone();
+        //CheckAttackZone();
     }
 
 
