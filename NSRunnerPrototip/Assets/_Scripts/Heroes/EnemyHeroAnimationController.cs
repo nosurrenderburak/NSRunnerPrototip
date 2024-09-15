@@ -6,7 +6,7 @@ public class EnemyHeroAnimationController : MonoBehaviour
     #region Serializable Fields
 
     [SerializeField] private GameObject parentObject;
-    [SerializeField] private MeshRenderer[] meshRenderers;
+    [SerializeField] private Renderer[] meshRenderers;
     [SerializeField] private ParticleSystem dieParticle;
 
     #endregion
