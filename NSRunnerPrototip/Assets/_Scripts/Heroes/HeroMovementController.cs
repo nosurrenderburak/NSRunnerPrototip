@@ -6,6 +6,8 @@ public class HeroMovementController : MonoBehaviour
 {
     [SerializeField] private TouchControllerHelper _touchControlHelper;
     [SerializeField] private Animator animator;
+    [SerializeField] private Animator katanaAnimator;
+    [SerializeField] private Animator henryAnimator;
 
     [Header("Movement")]
     //[SerializeField] private float _forwardMovementSpeed;
@@ -38,6 +40,17 @@ public class HeroMovementController : MonoBehaviour
     {
         animator.SetFloat(GameConsts.RIGHT,_touchControlHelper.horizontalSwipeConstant);
         animator.SetFloat(GameConsts.LEFT, -_touchControlHelper.horizontalSwipeConstant);
+        if (katanaAnimator.gameObject.activeSelf)
+        {
+            katanaAnimator.SetFloat(GameConsts.RIGHT,_touchControlHelper.horizontalSwipeConstant);
+            katanaAnimator.SetFloat(GameConsts.LEFT, -_touchControlHelper.horizontalSwipeConstant);
+        }
+        
+        if (henryAnimator.gameObject.activeSelf)
+        {
+            henryAnimator.SetFloat(GameConsts.RIGHT,_touchControlHelper.horizontalSwipeConstant);
+            henryAnimator.SetFloat(GameConsts.LEFT, -_touchControlHelper.horizontalSwipeConstant);
+        }
     }
     
     

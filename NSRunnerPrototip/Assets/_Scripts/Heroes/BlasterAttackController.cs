@@ -1,4 +1,5 @@
 using NoSurrender;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BlasterAttackController : MonoBehaviour
@@ -12,6 +13,10 @@ public class BlasterAttackController : MonoBehaviour
     [SerializeField] private Animator blasterAnimator;
     [SerializeField] private GameObject hattori;
     [SerializeField] private GameObject henry;
+
+
+    [SerializeField] private GameObject katanaBlaster;
+    [SerializeField] private GameObject henryBlaster;
 
     #endregion
 
@@ -41,10 +46,15 @@ public class BlasterAttackController : MonoBehaviour
                 _currentLevel = levelUpResources.LevelUpDatas.Count - 1;
             }
             
+            
+            
             levelUpParticle.Play();
             levelUpText.SetActive(true);
             _levelUpData = levelUpResources.GetLevelUpData(_currentLevel);
             _currentShootTime = _levelUpData.ShootTime;
+            
+            katanaBlaster.GetComponent<HeroBufferBlaster>().CurrentLevel = CurrentLevel;
+            katanaBlaster.GetComponent<HeroBufferBlaster>().LevelUpData = _levelUpData;
         }
     }
 
@@ -72,8 +82,18 @@ public class BlasterAttackController : MonoBehaviour
 
     public void SetEnabledHero(HeroBufferType heroBufferType)
     {
-        if (heroBufferType.Equals(HeroBufferType.Hattori)) {hattori.SetActive(true);}
-        else if (heroBufferType.Equals(HeroBufferType.Henry)) {henry.SetActive(true);}
+        if (heroBufferType.Equals(HeroBufferType.Hattori))
+        {
+            katanaBlaster.SetActive(true);
+            katanaBlaster.GetComponent<HeroBufferBlaster>().CurrentLevel = CurrentLevel;
+            katanaBlaster.GetComponent<HeroBufferBlaster>().LevelUpData = _levelUpData;
+        }
+        else if (heroBufferType.Equals(HeroBufferType.Henry))
+        {
+            henryBlaster.SetActive(true);
+            henryBlaster.GetComponent<HeroBufferBlaster>().CurrentLevel = CurrentLevel;
+            henryBlaster.GetComponent<HeroBufferBlaster>().LevelUpData = _levelUpData;
+        }
     }
 
 
