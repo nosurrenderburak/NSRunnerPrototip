@@ -33,6 +33,12 @@ public class BlasterAttackController : MonoBehaviour
         set
         {
             _currentLevel = value;
+
+            if (_currentLevel >= levelUpResources.LevelUpDatas.Count)
+            {
+                _currentLevel = levelUpResources.LevelUpDatas.Count - 1;
+            }
+            
             levelUpParticle.Play();
             levelUpText.SetActive(true);
             _levelUpData = levelUpResources.GetLevelUpData(_currentLevel);

@@ -8,6 +8,7 @@ public class LevelUpResources : ScriptableObject
 {
     [SerializeField] private List<LevelUpData> levelUpDatas = new ();
     
+    public List<LevelUpData> LevelUpDatas => levelUpDatas;
     public LevelUpData GetLevelUpData(int level) => levelUpDatas[level];
 }
 

@@ -29390,7 +29390,7 @@ MonoBehaviour:
     m_Bits: 128
   animator: {fileID: 1111493043}
   attackParticle: {fileID: 2036002590}
-  attackRange: 5
+  attackRange: 3
 --- !u!136 &1111493045
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -47276,7 +47276,7 @@ MonoBehaviour:
     m_Bits: 128
   animator: {fileID: 1873655947}
   attackParticle: {fileID: 491574231}
-  attackRange: 8
+  attackRange: 3
 --- !u!136 &1873655949
 CapsuleCollider:
   m_ObjectHideFlags: 0
