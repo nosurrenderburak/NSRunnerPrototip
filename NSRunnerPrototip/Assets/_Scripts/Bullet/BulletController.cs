@@ -21,6 +21,7 @@ public class BulletController : MonoBehaviour
     private EnemyHero _enemyHeroInstance;
     private GameObject _bulletBody;
     private HeroBufferHealthController _heroBufferInstance;
+    private RomanIvanovHealthController _romanIvanov;
 
     #endregion
 
@@ -32,6 +33,7 @@ public class BulletController : MonoBehaviour
         OnHitObstacle(other);
         OnHitEnemyHero(other);
         OnHitHeroBuffer(other);
+        OnHitBoss(other);
     }
 
     #endregion
@@ -87,6 +89,17 @@ public class BulletController : MonoBehaviour
         {
             _heroBufferInstance = other.gameObject.GetComponent<HeroBufferHealthController>();
             _heroBufferInstance.DecreaseHealth(1);
+            KillBullet();
+        }
+    }
+
+
+    private void OnHitBoss(Collider other)
+    {
+        if (other.gameObject.CompareTag(GameConsts.BOSS))
+        {
+            _romanIvanov = other.gameObject.GetComponent<RomanIvanovHealthController>();
+            _romanIvanov.OnHit(1);
             KillBullet();
         }
     }

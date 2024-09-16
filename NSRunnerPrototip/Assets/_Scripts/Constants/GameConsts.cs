@@ -8,6 +8,7 @@ namespace NoSurrender
         public const string BULLET = "Bullet";
         public const string ENEMY_HERO = "EnemyHero";
         public const string HERO_BUFFER = "HeroBuffer";
+        public const string BOSS = "Boss";
         
         // Animations
         public const string RIGHT = "Right";
