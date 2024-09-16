@@ -21448,6 +21448,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2656438216807845946, guid: 4b9fdc20e47e4409a9426e1e848153e5, type: 3}
+      propertyPath: henryHeroCollider
+      value: 
+      objectReference: {fileID: 1873655951}
+    - target: {fileID: 2656438216807845946, guid: 4b9fdc20e47e4409a9426e1e848153e5, type: 3}
+      propertyPath: hattoriHeroCollider
+      value: 
+      objectReference: {fileID: 1111493047}
+    - target: {fileID: 2656438216807845946, guid: 4b9fdc20e47e4409a9426e1e848153e5, type: 3}
+      propertyPath: blasterAttackController
+      value: 
+      objectReference: {fileID: 1903173939}
     - target: {fileID: 2957097410113079285, guid: 4b9fdc20e47e4409a9426e1e848153e5, type: 3}
       propertyPath: m_Speed
       value: 5
@@ -21515,7 +21527,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2254872250179190147, guid: 4b9fdc20e47e4409a9426e1e848153e5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1587267497}
   m_SourcePrefab: {fileID: 100100000, guid: 4b9fdc20e47e4409a9426e1e848153e5, type: 3}
 --- !u!4 &528497523 stripped
 Transform:
@@ -46978,7 +46993,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1111493043}
   vignetteAnimator: {fileID: 982582397}
+  parentTransform: {fileID: 587730800}
   collider: {fileID: 1111493045}
+  positionX: -2
   _isBlaster: 0
 --- !u!4 &1111638065 stripped
 Transform:
@@ -63646,6 +63663,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4587424789856546, guid: 62c86b8ac6c1f6941b1761cb2ddf2964, type: 3}
   m_PrefabInstance: {fileID: 1585392721}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1587267494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2254872250179190147, guid: 4b9fdc20e47e4409a9426e1e848153e5, type: 3}
+  m_PrefabInstance: {fileID: 526293584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1587267497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587267494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb6aed0c9d594c8590bea717fa55eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blasterAttackController: {fileID: 1903173939}
+  hattoriHeroCollider: {fileID: 1111493047}
+  henryHeroCollider: {fileID: 1873655951}
 --- !u!1001 &1587830160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74797,7 +74834,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1873655947}
   vignetteAnimator: {fileID: 982582397}
+  parentTransform: {fileID: 587730800}
   collider: {fileID: 1873655949}
+  positionX: 2
   _isBlaster: 0
 --- !u!1001 &1874188060
 PrefabInstance:
@@ -78253,6 +78292,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 1268160365}
   levelUpParticle: {fileID: 1516884452}
   levelUpText: {fileID: 1881804557}
+  blasterAnimator: {fileID: 1903173937}
   hattori: {fileID: 1111493041}
   henry: {fileID: 1873655945}
 --- !u!54 &1903173940

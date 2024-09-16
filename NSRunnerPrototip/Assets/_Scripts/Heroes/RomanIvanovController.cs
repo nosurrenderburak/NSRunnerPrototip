@@ -4,6 +4,7 @@ using UnityEngine;
 public class RomanIvanovController : Move
 {
     [SerializeField] private Animator animator;
+    
     [SerializeField] private float targetDistance;
     
     
@@ -15,4 +16,7 @@ public class RomanIvanovController : Move
             animator.SetBool(GameConsts.ATTACK, true);
         }
     }
+
+
+    
 }

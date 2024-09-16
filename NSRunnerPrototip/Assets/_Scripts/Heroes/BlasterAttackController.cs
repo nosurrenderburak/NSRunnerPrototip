@@ -9,6 +9,7 @@ public class BlasterAttackController : MonoBehaviour
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private ParticleSystem levelUpParticle;
     [SerializeField] private GameObject levelUpText;
+    [SerializeField] private Animator blasterAnimator;
     [SerializeField] private GameObject hattori;
     [SerializeField] private GameObject henry;
 
@@ -21,6 +22,7 @@ public class BlasterAttackController : MonoBehaviour
     private LevelUpData _levelUpData;
     private int _currentLevel;
     private float _currentShootTime;
+    private bool _isDeath;
 
     #endregion
 
@@ -81,6 +83,13 @@ public class BlasterAttackController : MonoBehaviour
         levelUpText.SetActive(true);
     }
 
+
+    public void PlayDeathAnimation()
+    {
+        blasterAnimator.SetTrigger(GameConsts.DIE);
+        _isDeath = true;
+    }
+
     #endregion
 
 
@@ -89,6 +98,7 @@ public class BlasterAttackController : MonoBehaviour
 
     private void SetTimeForNextShoot()
     {
+        if (_isDeath) return;
         _currentShootTime -= Time.deltaTime;
 
         if (_currentShootTime <= 0)

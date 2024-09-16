@@ -1,3 +1,4 @@
+using System.Collections;
 using NoSurrender;
 using UnityEngine;
 
@@ -69,7 +70,10 @@ public class HeroBufferAttackController : MonoBehaviour
         {
             animator.SetBool(GameConsts.ATTACK, true);
         }
+        else
+        {
+            animator.SetBool(GameConsts.ATTACK, false);
+        }
     }
-
     #endregion
 }

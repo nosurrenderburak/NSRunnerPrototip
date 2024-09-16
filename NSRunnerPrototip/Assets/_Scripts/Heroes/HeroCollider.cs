@@ -8,7 +8,9 @@ public class HeroCollider : MonoBehaviour
 
     [SerializeField] private Animator animator;
     [SerializeField] private Animator vignetteAnimator;
+    [SerializeField] private Transform parentTransform;
     [SerializeField] private Collider collider;
+    [SerializeField] private float positionX;
     [SerializeField] private bool _isBlaster;
 
     #endregion
@@ -42,18 +44,16 @@ public class HeroCollider : MonoBehaviour
     private void OnEnable()
     {
         collider.enabled = true;
-        _parentTransform = transform.parent;
-        transform.SetParent(_parentTransform);
+        transform.SetParent(parentTransform);
+        transform.localPosition = new Vector3(positionX, 0, 0);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag(GameConsts.ENEMY_HERO))
         {
-            transform.parent = null;
-            collider.enabled = false;
+            OnDie();
             vignetteAnimator.SetTrigger(GameConsts.HIT);
-            animator.SetTrigger(GameConsts.DIE);
             _enemyHero = other.gameObject.GetComponent<EnemyHero>();
             _enemyHero.KillHero();
         }
@@ -61,14 +61,19 @@ public class HeroCollider : MonoBehaviour
         
         if (other.gameObject.CompareTag(GameConsts.HERO_BUFFER))
         {
-            
-            transform.parent = null;
-            collider.enabled = false;
+            OnDie();
             vignetteAnimator.SetTrigger(GameConsts.HIT);
-            animator.SetTrigger(GameConsts.DIE);
             _heroBuffer = other.gameObject.GetComponent<HeroBufferHealthController>();
             _heroBuffer.KillBuffer();
         }
+    }
+    
+    
+    public void OnDie()
+    {
+        transform.parent = null;
+        collider.enabled = false;
+        animator.SetTrigger(GameConsts.DIE);
     }
 
     #endregion
