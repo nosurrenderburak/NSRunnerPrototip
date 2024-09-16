@@ -11,9 +11,9 @@ public class HeroResources : ScriptableObject
 
     private Dictionary<MoveSpeedType, float> _moveSpeedList = new()
     {
-        { MoveSpeedType.Slow, 1},
-        { MoveSpeedType.Normal, 2},
-        { MoveSpeedType.Fast, 2.5f},
+        { MoveSpeedType.Slow, 2.5f},
+        { MoveSpeedType.Normal, 2.8f},
+        { MoveSpeedType.Fast, 3.5f},
     };
 
     public Hero GetHero(PoolType targetHeroType)
