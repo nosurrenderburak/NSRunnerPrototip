@@ -20,7 +20,7 @@ MonoBehaviour:
     moveSpeedType: 2
     health: 0
   - heroType: 2
-    moveSpeedType: 1
+    moveSpeedType: 2
     health: 0
   - heroType: 3
     moveSpeedType: 0

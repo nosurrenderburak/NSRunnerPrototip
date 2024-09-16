@@ -8,6 +8,7 @@ public abstract class Move : MonoBehaviour
     #region Serializable Fields
 
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private bool isBuffer;
 
     #endregion
     
@@ -43,13 +44,21 @@ public abstract class Move : MonoBehaviour
     #endregion
 
 
+    #region Fields
+
+    private Vector3 _bufferTargetPos;
+
+    #endregion
+
+
     #region Unity Methods
 
     private void OnEnable()
     {
         StopMoving(false);
         FindTarget();
-        _currentTargetTransform = _targetTransform.position;
+        _bufferTargetPos = new Vector3(transform.position.x, transform.position.y, _targetTransform.position.z + 20f);
+        _currentTargetTransform = _bufferTargetPos;
     }
 
 
@@ -73,7 +82,8 @@ public abstract class Move : MonoBehaviour
 
     public void StopMoving(bool isStopped)
     {
-        agent.isStopped = isStopped;
+        if (agent.enabled)
+            agent.isStopped = isStopped;
     }
 
     #endregion
@@ -84,10 +94,12 @@ public abstract class Move : MonoBehaviour
     private void MoveToTarget()
     {
         if (_targetTransform == null) return;
-        
-        if (!agent.isStopped)
-            agent.SetDestination(_currentTargetTransform);
-        
+
+        if (agent.enabled)
+        {
+            if (!agent.isStopped)
+                agent.SetDestination(isBuffer ? _bufferTargetPos : _currentTargetTransform);
+        }
     }
 
     

@@ -1,6 +1,7 @@
 using System;
 using NoSurrender;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHero : MonoBehaviour
 {
@@ -8,8 +9,10 @@ public class EnemyHero : MonoBehaviour
 
     [SerializeField] private HeroResources heroResources;
     [SerializeField] private Collider collider;
+    [SerializeField] private NavMeshAgent agent;
     [SerializeField] private PoolType heroType;
     [SerializeField] private Animator animator;
+    [SerializeField] private bool isBackHero;
 
     #endregion
 
@@ -27,7 +30,7 @@ public class EnemyHero : MonoBehaviour
     {
         if (gameObject.TryGetComponent<EnemyHeroMove>(out EnemyHeroMove enemyHeroMove))
         {
-            enemyHeroMove.CurrentSpeed = heroResources.GetHero(heroType).MoveSpeed;
+            enemyHeroMove.CurrentSpeed = isBackHero ? heroResources.GetHero(PoolType.RomanIvanov).MoveSpeed : heroResources.GetHero(heroType).MoveSpeed;
         }
         
         if (gameObject.TryGetComponent<RomanIvanovController>(out RomanIvanovController romanIvanovController))
@@ -47,6 +50,7 @@ public class EnemyHero : MonoBehaviour
     public void KillHero()
     {
         collider.enabled = false;
+        agent.enabled = false;
         if (gameObject.TryGetComponent<EnemyHeroMove>(out EnemyHeroMove enemyHeroMove))
         {
             enemyHeroMove.StopMoving(true);

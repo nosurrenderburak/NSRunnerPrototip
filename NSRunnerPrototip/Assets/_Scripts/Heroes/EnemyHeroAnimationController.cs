@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyHeroAnimationController : MonoBehaviour
 {
@@ -8,6 +10,17 @@ public class EnemyHeroAnimationController : MonoBehaviour
     [SerializeField] private GameObject parentObject;
     [SerializeField] private Renderer[] meshRenderers;
     [SerializeField] private ParticleSystem dieParticle;
+    [SerializeField] private Animator animator;
+
+    #endregion
+
+
+    #region Unity Methods
+
+    private void OnEnable()
+    {
+        StartCoroutine(EnabledAnimator(Random.Range(0, 2)));
+    }
 
     #endregion
 
@@ -47,6 +60,13 @@ public class EnemyHeroAnimationController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         Destroy(parentObject);
+    }
+
+
+    private IEnumerator EnabledAnimator(int index)
+    {
+        yield return new WaitForSeconds(index.Equals(0) ? 0.1f : 0.2f);
+        animator.enabled = true;
     }
 
     #endregion

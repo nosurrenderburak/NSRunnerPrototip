@@ -69,7 +69,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3766601505232791866}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.75
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 50
   avoidancePriority: 50
@@ -96,8 +96,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroResources: {fileID: 11400000, guid: 7262ec366d5f94d99af18538524bdbfe, type: 2}
   collider: {fileID: 5058375782605887484}
+  agent: {fileID: 7947955521352537373}
   heroType: 0
   animator: {fileID: 4423606642234568366}
+  isBackHero: 1
 --- !u!114 &2248928244975786196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,8 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 7947955521352537373}
-  isHeroBuffer: 0
-  targetDistance: 0
+  isBuffer: 0
+  targetDistance: 15
+  isObi: 1
 --- !u!1001 &5755086470869293403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -963,7 +966,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7560620298218132144}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: feddc52a448fe4dce9e6b3d09aad62d9, type: 2}
   m_CullingMode: 0
@@ -998,6 +1001,7 @@ MonoBehaviour:
   - {fileID: 4046378240331741995}
   - {fileID: 7766663435832885611}
   dieParticle: {fileID: 5575994915987120573}
+  animator: {fileID: 4423606642234568366}
 --- !u!137 &7766663435832885611 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1145439282316373642, guid: 1e2914445390841b1aa54c2f0a468726, type: 3}

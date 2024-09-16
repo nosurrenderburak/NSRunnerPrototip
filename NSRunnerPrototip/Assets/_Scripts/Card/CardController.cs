@@ -4,6 +4,13 @@ using DG.Tweening;
 
 public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    #region Serializable Fields
+
+    [SerializeField] private BlasterAttackController blasterAttackController;
+
+    #endregion
+    
+    
     #region Fields
     
     private Vector3 _currentPosition;
@@ -31,6 +38,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         transform.position = _currentPosition;
         SetSmoothScale(Vector3.one, 0.2f);
+        blasterAttackController.PlayLevelUpVisualSequence();
     }
 
     #endregion

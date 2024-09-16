@@ -74,6 +74,13 @@ public class BlasterAttackController : MonoBehaviour
         else if (heroBufferType.Equals(HeroBufferType.Henry)) {henry.SetActive(true);}
     }
 
+
+    public void PlayLevelUpVisualSequence()
+    {
+        levelUpParticle.Play();
+        levelUpText.SetActive(true);
+    }
+
     #endregion
 
 
