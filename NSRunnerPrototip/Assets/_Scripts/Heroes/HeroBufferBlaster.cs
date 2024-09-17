@@ -21,6 +21,7 @@ public class HeroBufferBlaster : MonoBehaviour
     private LevelUpData _levelUpData;
     private int _currentLevel;
     private float _currentShootTime;
+    private int _attackDamage;
     private bool _isDeath;
     private EnemyHero _enemyHero;
     private HeroBufferHealthController _heroBuffer;
@@ -46,6 +47,16 @@ public class HeroBufferBlaster : MonoBehaviour
         set
         {
             _currentLevel = value;
+        }
+    }
+
+
+    public int AttackDamage
+    {
+        get => _attackDamage;
+        set
+        {
+            _attackDamage = value;
         }
     }
 
@@ -113,7 +124,7 @@ public class HeroBufferBlaster : MonoBehaviour
         
         if (_bulletInstance.TryGetComponent(out BulletController bulletController))
         {
-            bulletController.InitializeBullet(_levelUpData.BulletScale, _currentLevel, _levelUpData.BulletSpeed);
+            bulletController.InitializeBullet(_levelUpData.BulletScale, _currentLevel, _levelUpData.BulletSpeed, _attackDamage);
         }
     }
     

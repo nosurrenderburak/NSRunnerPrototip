@@ -19,8 +19,10 @@ public struct LevelUpData
     [SerializeField] private Vector3 bulletScale;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootTime;
+    [SerializeField] private int damage;
     
     public Vector3 BulletScale => bulletScale;
     public float BulletSpeed => bulletSpeed;
     public float ShootTime => shootTime;
+    public int Damage => damage;
 }

@@ -28,6 +28,7 @@ public class BlasterAttackController : MonoBehaviour
     private int _currentLevel;
     private float _currentShootTime;
     private bool _isDeath;
+    private int _attackDamage;
 
     #endregion
 
@@ -45,14 +46,13 @@ public class BlasterAttackController : MonoBehaviour
             {
                 _currentLevel = levelUpResources.LevelUpDatas.Count - 1;
             }
-            
-            
-            
-            levelUpParticle.Play();
-            levelUpText.SetActive(true);
+
+
+
+            PlayLevelUpVisualSequence();
             _levelUpData = levelUpResources.GetLevelUpData(_currentLevel);
             _currentShootTime = _levelUpData.ShootTime;
-            
+            _attackDamage = _levelUpData.Damage;
             katanaBlaster.GetComponent<HeroBufferBlaster>().CurrentLevel = CurrentLevel;
             katanaBlaster.GetComponent<HeroBufferBlaster>().LevelUpData = _levelUpData;
         }
@@ -67,6 +67,7 @@ public class BlasterAttackController : MonoBehaviour
     {
         _levelUpData = levelUpResources.GetLevelUpData(_currentLevel);
         _currentShootTime = _levelUpData.ShootTime;
+        _attackDamage = _levelUpData.Damage;
     }
 
     
@@ -101,6 +102,7 @@ public class BlasterAttackController : MonoBehaviour
     {
         levelUpParticle.Play();
         levelUpText.SetActive(true);
+        AudioManager.Instance.PlayLevelUpAudio();
     }
 
 
@@ -135,7 +137,7 @@ public class BlasterAttackController : MonoBehaviour
         
         if (_bulletInstance.TryGetComponent(out BulletController bulletController))
         {
-            bulletController.InitializeBullet(_levelUpData.BulletScale, _currentLevel, _levelUpData.BulletSpeed);
+            bulletController.InitializeBullet(_levelUpData.BulletScale, _currentLevel, _levelUpData.BulletSpeed, _attackDamage);
         }
     }
 

@@ -22,6 +22,7 @@ public class BulletController : MonoBehaviour
     private GameObject _bulletBody;
     private HeroBufferHealthController _heroBufferInstance;
     private RomanIvanovHealthController _romanIvanov;
+    private int _attackDamage;
 
     #endregion
 
@@ -41,12 +42,14 @@ public class BulletController : MonoBehaviour
 
     #region Public Methods
 
-    public void InitializeBullet(Vector3 scale, int level, float speed)
+    public void InitializeBullet(Vector3 scale, int level, float speed, int damage)
     {
         transform.localScale = scale;
         bulletMovementController.ThrowBullet(speed);
         _bulletBody = bulletVisuals[level];
         _bulletBody.SetActive(true);
+        _attackDamage = damage;
+        AudioManager.Instance.PlayBulletAudio();
     }
 
     
@@ -88,7 +91,7 @@ public class BulletController : MonoBehaviour
         if (other.gameObject.CompareTag(GameConsts.HERO_BUFFER))
         {
             _heroBufferInstance = other.gameObject.GetComponent<HeroBufferHealthController>();
-            _heroBufferInstance.DecreaseHealth(1);
+            _heroBufferInstance.DecreaseHealth(_attackDamage);
             KillBullet();
         }
     }

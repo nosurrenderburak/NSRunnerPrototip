@@ -28,8 +28,10 @@ public class EnemyHero : MonoBehaviour
 
     private void OnEnable()
     {
+        /*
         if (gameObject.TryGetComponent<EnemyHeroMove>(out EnemyHeroMove enemyHeroMove))
         {
+            
             enemyHeroMove.CurrentSpeed = isBackHero ? heroResources.GetHero(PoolType.RomanIvanov).MoveSpeed : heroResources.GetHero(heroType).MoveSpeed;
         }
         
@@ -37,7 +39,7 @@ public class EnemyHero : MonoBehaviour
         {
             romanIvanovController.CurrentSpeed = heroResources.GetHero(heroType).MoveSpeed;
         }
-
+*/
         collider.enabled = true;
         animator.SetBool(GameConsts.DIE, false);
     }

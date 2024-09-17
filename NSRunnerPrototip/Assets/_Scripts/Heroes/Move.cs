@@ -30,17 +30,7 @@ public abstract class Move : MonoBehaviour
         get { return _currentTargetTransform; }
         set { _currentTargetTransform = value; }
     }
-
-    public float CurrentSpeed
-    {
-        get => _currentSpeed;
-        set
-        {
-            _currentSpeed = value;
-            agent.speed = _currentSpeed;
-        }
-    }
-
+    
     #endregion
 
 

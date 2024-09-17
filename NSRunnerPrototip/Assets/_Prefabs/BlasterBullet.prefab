@@ -217,6 +217,14 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.m_ColorSpace
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 96908605850887236, guid: 52343797a194ef24485c44c9af8ddb37, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.004760742
+      objectReference: {fileID: 0}
+    - target: {fileID: 96908605850887236, guid: 52343797a194ef24485c44c9af8ddb37, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.5526314
+      objectReference: {fileID: 0}
     - target: {fileID: 198113628349522944, guid: 52343797a194ef24485c44c9af8ddb37, type: 3}
       propertyPath: LightsModule.enabled
       value: 0
@@ -578,6 +586,10 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.m_ColorSpace
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 96908605850887236, guid: 52343797a194ef24485c44c9af8ddb37, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.57894707
+      objectReference: {fileID: 0}
     - target: {fileID: 198113628349522944, guid: 52343797a194ef24485c44c9af8ddb37, type: 3}
       propertyPath: LightsModule.enabled
       value: 0
@@ -797,6 +809,14 @@ PrefabInstance:
     - target: {fileID: 4679774024823596, guid: 52343797a194ef24485c44c9af8ddb37, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 96908605850887236, guid: 52343797a194ef24485c44c9af8ddb37, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.0071411133
+      objectReference: {fileID: 0}
+    - target: {fileID: 96908605850887236, guid: 52343797a194ef24485c44c9af8ddb37, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.5684204
       objectReference: {fileID: 0}
     - target: {fileID: 198113628349522944, guid: 52343797a194ef24485c44c9af8ddb37, type: 3}
       propertyPath: LightsModule.enabled

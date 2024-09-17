@@ -13,7 +13,7 @@ public class HeroResources : ScriptableObject
     {
         { MoveSpeedType.Slow, 2.5f},
         { MoveSpeedType.Normal, 2.8f},
-        { MoveSpeedType.Fast, 3.5f},
+        { MoveSpeedType.Fast, 5},
     };
 
     public Hero GetHero(PoolType targetHeroType)
