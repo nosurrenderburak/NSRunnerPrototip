@@ -12,6 +12,7 @@ TagManager:
   - HeroBuffer
   - Boss
   - Exit
+  - Gate
   layers:
   - Default
   - TransparentFX
