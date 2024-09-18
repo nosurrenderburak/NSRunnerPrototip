@@ -14,6 +14,7 @@ public class MBPHelper : MonoBehaviour
 
     private MaterialPropertyBlock _materialPropertyBlock;
     private const string ALBEDO_COLOR = "_Color";
+    private const string BASE_COLOR = "_BaseColor";
 
     #endregion
 
@@ -38,7 +39,7 @@ public class MBPHelper : MonoBehaviour
 
     private void SetMaterialPropertyBlock()
     {
-        _materialPropertyBlock.SetColor(ALBEDO_COLOR, _mainColor);
+        _materialPropertyBlock.SetColor(BASE_COLOR, _mainColor);
         _objectRenderer.SetPropertyBlock(_materialPropertyBlock);
     }
 
