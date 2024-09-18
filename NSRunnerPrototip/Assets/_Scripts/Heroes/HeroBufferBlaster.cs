@@ -10,7 +10,9 @@ public class HeroBufferBlaster : MonoBehaviour
     [SerializeField] private Transform parentTransform;
     [SerializeField] private Collider collider;
     [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] private ParticleSystem levelUpParticle;
     [SerializeField] private float positionX;
+    [SerializeField] private bool bulletVoiceActive;
 
     #endregion
     
@@ -68,10 +70,11 @@ public class HeroBufferBlaster : MonoBehaviour
     
     private void OnEnable()
     {
+        if (levelUpParticle != null) {levelUpParticle.Play();}
         _isDeath = false;
         collider.enabled = true;
         transform.SetParent(parentTransform);
-        transform.localPosition = new Vector3(positionX, 0, 0);
+        //transform.localPosition = new Vector3(positionX, 0, 0);
     }
 
     private void Update()
@@ -95,8 +98,8 @@ public class HeroBufferBlaster : MonoBehaviour
         {
             OnDie();
             vignetteAnimator.SetTrigger(GameConsts.HIT);
-            _heroBuffer = other.gameObject.GetComponent<HeroBufferHealthController>();
-            _heroBuffer.KillBuffer();
+            //_heroBuffer = other.gameObject.GetComponent<HeroBufferHealthController>();
+            //_heroBuffer.KillBuffer();
         }
     }
 
@@ -124,7 +127,7 @@ public class HeroBufferBlaster : MonoBehaviour
         
         if (_bulletInstance.TryGetComponent(out BulletController bulletController))
         {
-            bulletController.InitializeBullet(_levelUpData.BulletScale, _currentLevel, _levelUpData.BulletSpeed, _attackDamage);
+            bulletController.InitializeBullet(_levelUpData.BulletScale, _currentLevel, _levelUpData.BulletSpeed, _attackDamage, bulletVoiceActive);
         }
     }
     

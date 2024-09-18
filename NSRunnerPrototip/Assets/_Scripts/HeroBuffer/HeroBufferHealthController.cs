@@ -3,6 +3,7 @@ using System.Collections;
 using NoSurrender;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class HeroBufferHealthController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class HeroBufferHealthController : MonoBehaviour
     [SerializeField] private GameObject bufferBody;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private bool hack;
+    [SerializeField] private bool randomDecrease;
     [SerializeField] private bool healthStatic;
     [SerializeField] private int maxHealth;
 
@@ -60,7 +62,11 @@ public class HeroBufferHealthController : MonoBehaviour
     public void DecreaseHealth(int damage)
     {
         if (heroBuffer.IsDead) return;
-        
+
+        if (randomDecrease)
+        {
+            damage = Random.Range(3, 7);
+        }
         maxHealth -= hack ? 1 : damage;
         if (healthStatic) maxHealth = Mathf.Max(5, maxHealth);
         healthText.text = maxHealth.ToString();

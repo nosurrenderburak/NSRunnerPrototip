@@ -21,6 +21,7 @@ public class BulletController : MonoBehaviour
     private EnemyHero _enemyHeroInstance;
     private GameObject _bulletBody;
     private HeroBufferHealthController _heroBufferInstance;
+    private GateController _gateInstance;
     private RomanIvanovHealthController _romanIvanov;
     private int _attackDamage;
 
@@ -35,6 +36,7 @@ public class BulletController : MonoBehaviour
         OnHitEnemyHero(other);
         OnHitHeroBuffer(other);
         OnHitBoss(other);
+        OnHitGate(other);
     }
 
     #endregion
@@ -42,14 +44,15 @@ public class BulletController : MonoBehaviour
 
     #region Public Methods
 
-    public void InitializeBullet(Vector3 scale, int level, float speed, int damage)
+    public void InitializeBullet(Vector3 scale, int level, float speed, int damage, bool bulletVoiceActive)
     {
         transform.localScale = scale;
         bulletMovementController.ThrowBullet(speed);
         _bulletBody = bulletVisuals[level];
         _bulletBody.SetActive(true);
         _attackDamage = damage;
-        AudioManager.Instance.PlayBulletAudio();
+        if (bulletVoiceActive)
+            AudioManager.Instance.PlayBulletAudio();
     }
 
     
@@ -92,6 +95,17 @@ public class BulletController : MonoBehaviour
         {
             _heroBufferInstance = other.gameObject.GetComponent<HeroBufferHealthController>();
             _heroBufferInstance.DecreaseHealth(_attackDamage);
+            KillBullet();
+        }
+    }
+
+
+    private void OnHitGate(Collider other)
+    {
+        if (other.gameObject.CompareTag(GameConsts.GATE))
+        {
+            _gateInstance = other.gameObject.GetComponent<GateController>();
+            _gateInstance.IncreaseGateLevel(1);
             KillBullet();
         }
     }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using NoSurrender;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,10 +15,14 @@ public class BlasterAttackController : MonoBehaviour
     [SerializeField] private Animator blasterAnimator;
     [SerializeField] private GameObject hattori;
     [SerializeField] private GameObject henry;
+    [SerializeField] private ParticleSystem[] blasterParticles;
+    [SerializeField] private HeroBufferBlaster[] heroBufferBlasters;
 
 
     [SerializeField] private GameObject katanaBlaster;
     [SerializeField] private GameObject henryBlaster;
+    
+    [SerializeField] private List<BlasterGroup> blasterGroups = new ();
 
     #endregion
 
@@ -29,6 +35,7 @@ public class BlasterAttackController : MonoBehaviour
     private float _currentShootTime;
     private bool _isDeath;
     private int _attackDamage;
+    private int _groupIndex = -1;
 
     #endregion
 
@@ -48,13 +55,14 @@ public class BlasterAttackController : MonoBehaviour
             }
 
 
-
+            PlayAllBlasterParticles();
             PlayLevelUpVisualSequence();
             _levelUpData = levelUpResources.GetLevelUpData(_currentLevel);
             _currentShootTime = _levelUpData.ShootTime;
             _attackDamage = _levelUpData.Damage;
             katanaBlaster.GetComponent<HeroBufferBlaster>().CurrentLevel = CurrentLevel;
             katanaBlaster.GetComponent<HeroBufferBlaster>().LevelUpData = _levelUpData;
+            SetHeroBufferBlaster();
         }
     }
 
@@ -74,6 +82,24 @@ public class BlasterAttackController : MonoBehaviour
     private void Update()
     {
        SetTimeForNextShoot();
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(GameConsts.GATE))
+        {
+            levelUpParticle.Play();
+            _groupIndex++;
+            for (var i = 0; i < blasterGroups.Count; i++)
+            {
+                blasterGroups[i].gameObject.SetActive(false);
+            }
+            
+            blasterGroups[_groupIndex].gameObject.SetActive(true);
+            blasterGroups[_groupIndex].InitializeGroup(_levelUpData, _currentLevel);
+            AudioManager.Instance.PlayLevelUpAudio();
+        }
     }
 
     #endregion
@@ -117,6 +143,15 @@ public class BlasterAttackController : MonoBehaviour
 
     #region Private Methods
     
+    
+    private void PlayAllBlasterParticles()
+    {
+        foreach (var blasterParticle in blasterParticles)
+        {
+            blasterParticle.Play();
+        }
+    }
+    
 
     private void SetTimeForNextShoot()
     {
@@ -129,6 +164,16 @@ public class BlasterAttackController : MonoBehaviour
             _currentShootTime = _levelUpData.ShootTime;;
         }
     }
+    
+    
+    private void SetHeroBufferBlaster()
+    {
+        for (var i = 0; i < heroBufferBlasters.Length; i++)
+        {
+            heroBufferBlasters[i].CurrentLevel = CurrentLevel;
+            heroBufferBlasters[i].LevelUpData = _levelUpData;
+        }
+    }
 
 
     private void Shoot()
@@ -137,7 +182,7 @@ public class BlasterAttackController : MonoBehaviour
         
         if (_bulletInstance.TryGetComponent(out BulletController bulletController))
         {
-            bulletController.InitializeBullet(_levelUpData.BulletScale, _currentLevel, _levelUpData.BulletSpeed, _attackDamage);
+            bulletController.InitializeBullet(_levelUpData.BulletScale, _currentLevel, _levelUpData.BulletSpeed, _attackDamage, true);
         }
     }
 

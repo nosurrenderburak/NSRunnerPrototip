@@ -9,6 +9,7 @@ namespace NoSurrender
         public const string ENEMY_HERO = "EnemyHero";
         public const string HERO_BUFFER = "HeroBuffer";
         public const string BOSS = "Boss";
+        public const string GATE = "Gate";
         
         // Animations
         public const string RIGHT = "Right";
@@ -17,5 +18,10 @@ namespace NoSurrender
         public const string ATTACK = "Attack";
         public const string HIT = "Hit";
         public const string SHAKE = "Shake";
+        
+        
+        // Color
+        public const string BLUE = "Blue";
+        public const string RED = "Red";
     }
 }

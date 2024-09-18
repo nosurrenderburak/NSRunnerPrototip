@@ -9,6 +9,8 @@ public class HeroMovementController : MonoBehaviour
     [SerializeField] private Animator katanaAnimator;
     [SerializeField] private Animator henryAnimator;
 
+    [SerializeField] private Animator[] blasters;
+
     [Header("Movement")]
     //[SerializeField] private float _forwardMovementSpeed;
     [SerializeField] private float _horizontalMovementSpeed;
@@ -50,6 +52,13 @@ public class HeroMovementController : MonoBehaviour
         {
             henryAnimator.SetFloat(GameConsts.RIGHT,_touchControlHelper.horizontalSwipeConstant);
             henryAnimator.SetFloat(GameConsts.LEFT, -_touchControlHelper.horizontalSwipeConstant);
+        }
+        
+        if (blasters.Length == 0) return;
+        for (var i = 0; i < blasters.Length; i++)
+        {
+            blasters[i].SetFloat(GameConsts.RIGHT, _touchControlHelper.horizontalSwipeConstant);
+            blasters[i].SetFloat(GameConsts.LEFT, -_touchControlHelper.horizontalSwipeConstant);
         }
     }
     

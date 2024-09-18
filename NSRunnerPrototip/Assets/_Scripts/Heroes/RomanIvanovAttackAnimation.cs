@@ -9,6 +9,9 @@ public class RomanIvanovAttackAnimation : MonoBehaviour
     [SerializeField] private HeroBufferBlaster henryBlaster;
     
     
+    [SerializeField] private HeroBufferBlaster[] heroBufferBlasters;
+    
+    
     public void KillHeroes()
     {
         blasterAttackController.PlayDeathAnimation();
@@ -16,5 +19,10 @@ public class RomanIvanovAttackAnimation : MonoBehaviour
         if (henryHeroCollider.gameObject.activeSelf) henryHeroCollider.OnDie();
         if (katanaBlaster.gameObject.activeSelf) katanaBlaster.OnDie();
         if (henryBlaster.gameObject.activeSelf) henryBlaster.OnDie();
+        
+        for (var i = 0; i < heroBufferBlasters.Length; i++)
+        {
+            if (heroBufferBlasters[i].gameObject.activeSelf) heroBufferBlasters[i].OnDie();
+        }
     }
 }
