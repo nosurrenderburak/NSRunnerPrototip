@@ -15,6 +15,9 @@ namespace NoSurrender
         TriDrone,
         RomanIvanov,
         Heli,
+        Blaster,
+        Hattori,
+        Henry, 
     }
 
 
