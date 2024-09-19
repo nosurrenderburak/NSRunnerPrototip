@@ -88,7 +88,8 @@ public class HeroBufferBlaster : MonoBehaviour
         if (other.gameObject.CompareTag(GameConsts.ENEMY_HERO))
         {
             OnDie();
-            vignetteAnimator.SetTrigger(GameConsts.HIT);
+            if (vignetteAnimator.gameObject.activeSelf)
+                vignetteAnimator.SetTrigger(GameConsts.HIT);
             _enemyHero = other.gameObject.GetComponent<EnemyHero>();
             _enemyHero.KillHero();
         }
@@ -97,7 +98,8 @@ public class HeroBufferBlaster : MonoBehaviour
         if (other.gameObject.CompareTag(GameConsts.HERO_BUFFER))
         {
             OnDie();
-            vignetteAnimator.SetTrigger(GameConsts.HIT);
+            if (vignetteAnimator.gameObject.activeSelf)
+                vignetteAnimator.SetTrigger(GameConsts.HIT);
             //_heroBuffer = other.gameObject.GetComponent<HeroBufferHealthController>();
             //_heroBuffer.KillBuffer();
         }

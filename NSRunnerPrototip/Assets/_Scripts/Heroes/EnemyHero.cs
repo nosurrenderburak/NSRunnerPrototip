@@ -12,6 +12,7 @@ public class EnemyHero : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private PoolType heroType;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject manaIcon;
     [SerializeField] private bool isBackHero;
 
     #endregion
@@ -51,6 +52,8 @@ public class EnemyHero : MonoBehaviour
 
     public void KillHero()
     {
+        //manaIcon.SetActive(true);
+        //UIManager.Instance.UpdateManaText(1);
         collider.enabled = false;
         agent.enabled = false;
         if (gameObject.TryGetComponent<EnemyHeroMove>(out EnemyHeroMove enemyHeroMove))

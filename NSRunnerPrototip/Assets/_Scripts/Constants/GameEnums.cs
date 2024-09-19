@@ -17,7 +17,8 @@ namespace NoSurrender
         Heli,
         Blaster,
         Hattori,
-        Henry, 
+        Henry,
+        RevolverTank,
     }
 
 

@@ -8,7 +8,9 @@ public class HeroMovementController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Animator katanaAnimator;
     [SerializeField] private Animator henryAnimator;
-
+    [SerializeField] private Animator heliAnimator;
+    [SerializeField] private Animator revolverAnimator;
+    
     [SerializeField] private Animator[] blasters;
 
     [Header("Movement")]
@@ -31,7 +33,6 @@ public class HeroMovementController : MonoBehaviour
     }
 
 
-
     private void SetCharacterMovementForward()
     {
         //transform.Translate(Vector3.forward * _forwardMovementSpeed * Time.fixedDeltaTime);
@@ -47,6 +48,21 @@ public class HeroMovementController : MonoBehaviour
             katanaAnimator.SetFloat(GameConsts.RIGHT,_touchControlHelper.horizontalSwipeConstant);
             katanaAnimator.SetFloat(GameConsts.LEFT, -_touchControlHelper.horizontalSwipeConstant);
         }
+
+
+        if (heliAnimator.gameObject.activeSelf)
+        {
+            heliAnimator.SetFloat(GameConsts.RIGHT,_touchControlHelper.horizontalSwipeConstant);
+            heliAnimator.SetFloat(GameConsts.LEFT, -_touchControlHelper.horizontalSwipeConstant);
+        }
+
+
+        if (revolverAnimator.gameObject.activeSelf)
+        {
+            revolverAnimator.SetFloat(GameConsts.RIGHT,_touchControlHelper.horizontalSwipeConstant);
+            revolverAnimator.SetFloat(GameConsts.LEFT, -_touchControlHelper.horizontalSwipeConstant);
+        }
+        
         
         if (henryAnimator.gameObject.activeSelf)
         {

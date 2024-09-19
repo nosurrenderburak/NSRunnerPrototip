@@ -17,6 +17,10 @@ public class BlasterAttackController : MonoBehaviour
     [SerializeField] private GameObject henry;
     [SerializeField] private ParticleSystem[] blasterParticles;
     [SerializeField] private HeroBufferBlaster[] heroBufferBlasters;
+    [SerializeField] private HeliController heli;
+    [SerializeField] private RevolverController revolver;
+    [SerializeField] private ParticleSystem heliParticle;
+    [SerializeField] private ParticleSystem revolverParticle;
 
 
     [SerializeField] private GameObject katanaBlaster;
@@ -62,7 +66,11 @@ public class BlasterAttackController : MonoBehaviour
             _attackDamage = _levelUpData.Damage;
             katanaBlaster.GetComponent<HeroBufferBlaster>().CurrentLevel = CurrentLevel;
             katanaBlaster.GetComponent<HeroBufferBlaster>().LevelUpData = _levelUpData;
+            heli.CurrentLevel = CurrentLevel;
+            revolver.CurrentLevel = CurrentLevel;
             SetHeroBufferBlaster();
+            if (heliParticle.gameObject.activeSelf) { heliParticle.Play(); }
+            if (revolverParticle.gameObject.activeSelf) { revolverParticle.Play(); }
         }
     }
 

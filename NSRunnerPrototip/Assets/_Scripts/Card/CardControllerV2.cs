@@ -13,6 +13,16 @@ public class CardControllerV2 : MonoBehaviour
     [SerializeField] private Image heroImage;
     [SerializeField] private TMP_Text manaText;
     [SerializeField] private TMP_Text cardNameText;
+    [SerializeField] private GameObject hero;
+    [SerializeField] private Animator cardAnimator;
+    [SerializeField] private Animator lineGroupAnimator;
+
+    #endregion
+
+
+    #region Properties
+    public GameObject Hero => hero;
+    public Card Card => _cardInstance;
 
     #endregion
 
@@ -30,6 +40,14 @@ public class CardControllerV2 : MonoBehaviour
     {
         GetCard();
         InitializeCard();
+        cardAnimator.enabled = _cardInstance.ManaCost <= UIManager.Instance.ManaValue;  
+        UIManager.Instance.OnManaChanged += SetCardAnimator;
+    }
+
+
+    private void OnDisable()
+    {
+        UIManager.Instance.OnManaChanged -= SetCardAnimator;
     }
 
     #endregion
@@ -43,6 +61,13 @@ public class CardControllerV2 : MonoBehaviour
         heroImage.sprite = _cardInstance.CardSprite;
         manaText.text = _cardInstance.ManaCost.ToString();
         cardNameText.text = _cardInstance.CardName;
+    }
+
+
+    private void SetCardAnimator()
+    {
+        cardAnimator.enabled = _cardInstance.ManaCost <= UIManager.Instance.ManaValue;
+        lineGroupAnimator.enabled = _cardInstance.ManaCost <= UIManager.Instance.ManaValue;
     }
     
     

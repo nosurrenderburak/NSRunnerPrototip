@@ -12,4 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca4e5ad211114a29a3c7faae8535167, type: 3}
   m_Name: CardResources
   m_EditorClassIdentifier: 
-  cardList: []
+  cardList:
+  - heroType: 5
+    cardSprite: {fileID: 21300000, guid: da39335cd5d7a4b35989ea4613644e4d, type: 3}
+    cardName: Mrs Blaster
+    manaCost: 35
+  - heroType: 6
+    cardSprite: {fileID: 21300000, guid: 95cd1c96a583e4c3aa771c61f918eb41, type: 3}
+    cardName: Hattori
+    manaCost: 10
+  - heroType: 7
+    cardSprite: {fileID: 21300000, guid: 60b3be680c87b437b89d9dd3c770e5ed, type: 3}
+    cardName: Henry 10th
+    manaCost: 15
+  - heroType: 4
+    cardSprite: {fileID: 21300000, guid: 36e5fb58a7297439e8fc798030f9b3db, type: 3}
+    cardName: Heli
+    manaCost: 15
+  - heroType: 8
+    cardSprite: {fileID: 21300000, guid: f93b91972ac5348568753738f0d3252a, type: 3}
+    cardName: Revolver Tank
+    manaCost: 10

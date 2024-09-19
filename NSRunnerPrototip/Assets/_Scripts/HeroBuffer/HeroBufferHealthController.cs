@@ -81,7 +81,7 @@ public class HeroBufferHealthController : MonoBehaviour
         explosionParticle.Play();
         boxCollider.enabled = false;
         
-        shakeAnimator.SetTrigger(GameConsts.SHAKE);
+        if (shakeAnimator != null) shakeAnimator.SetTrigger(GameConsts.SHAKE);
         heroBuffer.IsDead = true;
         StartCoroutine(nameof(DestroyBuffer));
     }
@@ -95,15 +95,17 @@ public class HeroBufferHealthController : MonoBehaviour
     {
         if (maxHealth > 0) return;
         
+        UIManager.Instance.UpdateManaText(5);
         bufferBody.SetActive(false);
         explosionParticle.Play();
         boxCollider.enabled = false;
         
-        shakeAnimator.SetTrigger(GameConsts.SHAKE);
+        if (shakeAnimator != null) shakeAnimator.SetTrigger(GameConsts.SHAKE);
         heroBuffer.IsDead = true;
         _blasterAttackController = enemyHeroMove.TargetTransform.GetComponentInChildren<BlasterAttackController>();
         _blasterAttackController.CurrentLevel++;
-        _blasterAttackController.SetEnabledHero(heroBuffer.HeroBufferType);
+        //_blasterAttackController.SetEnabledHero(heroBuffer.HeroBufferType);
+        
         AudioManager.Instance.PlayExplosionAudio();
 
         StartCoroutine(nameof(DestroyBuffer));
