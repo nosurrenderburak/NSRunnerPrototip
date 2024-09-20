@@ -15,6 +15,7 @@ public class HeroBufferHealthController : MonoBehaviour
     [SerializeField] private Animator shakeAnimator;
     [SerializeField] private ParticleSystem explosionParticle;
     [SerializeField] private BoxCollider boxCollider;
+    [SerializeField] private ParticleSystem manaParticle;
     [SerializeField] private GameObject bufferBody;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private bool hack;
@@ -95,9 +96,10 @@ public class HeroBufferHealthController : MonoBehaviour
     {
         if (maxHealth > 0) return;
         
-        UIManager.Instance.UpdateManaText(5);
+        UIManager.Instance.UpdateManaText(heroBuffer.ManaValue);
         bufferBody.SetActive(false);
         explosionParticle.Play();
+        manaParticle.Play();
         boxCollider.enabled = false;
         
         if (shakeAnimator != null) shakeAnimator.SetTrigger(GameConsts.SHAKE);

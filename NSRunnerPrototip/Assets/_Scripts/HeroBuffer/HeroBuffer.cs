@@ -1,4 +1,5 @@
 using NoSurrender;
+using TMPro;
 using UnityEngine;
 
 
@@ -9,6 +10,8 @@ public class HeroBuffer : MonoBehaviour
     [SerializeField] private HeroBufferResources heroBufferResources;
     [SerializeField] private HeroBufferType heroBufferType;
     [SerializeField] private Transform modelParent;
+    [SerializeField] private TMP_Text manaText;
+    [SerializeField] private int manaValue;
 
     #endregion
 
@@ -22,6 +25,7 @@ public class HeroBuffer : MonoBehaviour
     
     #region Properties
 
+    public int ManaValue => manaValue;
     public HeroBufferType HeroBufferType => heroBufferType;
 
     public bool IsDead
@@ -38,6 +42,7 @@ public class HeroBuffer : MonoBehaviour
     private void OnEnable()
     {
         SpawnHeroBuffer();
+        manaText.text = manaValue.ToString();
     }
 
     #endregion
