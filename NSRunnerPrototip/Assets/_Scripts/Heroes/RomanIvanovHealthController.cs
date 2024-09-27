@@ -42,10 +42,14 @@ public class RomanIvanovHealthController : MonoBehaviour
         _currentHealth -= damageValue;
         healthText.text = _currentHealth.ToString();
         healthSlider.DOValue(_currentHealth / maxHealth, _sliderDuration);
-        healthMaterial.DOColor(_hitColor, 0.2f).OnComplete(() =>
+
+        if (healthMaterial != null)
         {
-            healthMaterial.DOColor(Color.white, 0.2f);
-        });
+            healthMaterial.DOColor(_hitColor, 0.2f).OnComplete(() =>
+            {
+                healthMaterial.DOColor(Color.white, 0.2f);
+            });
+        }
     }
 
     #endregion

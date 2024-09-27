@@ -12,6 +12,7 @@ public class EnemyHero : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private PoolType heroType;
     [SerializeField] private Animator animator;
+    [SerializeField] private ParticleSystem bloodParticle;
     [SerializeField] private GameObject manaIcon;
     [SerializeField] private bool isBackHero;
 
@@ -65,6 +66,12 @@ public class EnemyHero : MonoBehaviour
         {
             romanIvanovController.StopMoving(true);
         }
+
+        if (bloodParticle != null)
+        {
+            bloodParticle.Play();
+        }
+        
         animator.SetBool(GameConsts.DIE, true);
     }
 
